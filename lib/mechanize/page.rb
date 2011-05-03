@@ -54,7 +54,9 @@ class Mechanize::Page < Mechanize::File
       end
     end
 
-    super(uri, response, body, code)
+    super(uri, response, body, code) do |file|
+			yield file if block_given?
+		end
   end
 
   def title
